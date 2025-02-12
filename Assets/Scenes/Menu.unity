@@ -902,7 +902,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 845727479}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 925887354}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: SetIntroActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &845727479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -970,6 +982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddb570ac7d9c206419d3c934e70fcd3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introButton: {fileID: 845727478}
 --- !u!4 &925887355
 Transform:
   m_ObjectHideFlags: 0

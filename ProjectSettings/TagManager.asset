@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Collectible
   - Items
+  - potion
+  - danger
   layers:
   - Default
   - TransparentFX
@@ -13,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 

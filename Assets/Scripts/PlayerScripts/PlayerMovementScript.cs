@@ -4,17 +4,28 @@ using UnityEngine;
 
 public class PlayerMovementScript : MonoBehaviour
 {
-    //declare variables
-    public float playerSpeed = 20f;
+    public float playerSpeed = 10f;
     public float rotationSpeed = 15f;
-    void Start()
+    public float jumpForce = 5f; // Adjust jump height
+    public Transform cameraTransform; // Assign manually in Inspector
+    public LayerMask groundLayer; // Assign "Ground" layer in Inspector
+
+    private Rigidbody rb;
+    private bool isGrounded;
+
+    private void Start()
     {
-        //empty for now
+        rb = GetComponent<Rigidbody>(); // Get the Rigidbody component
+        if (rb == null)
+        {
+            Debug.LogError("No Rigidbody found! Add one to the player.");
+        }
     }
 
-    void Update()
+    private void Update()
     {
         Movement();
+        Jump();
     }
 
     void Movement()
@@ -22,7 +33,17 @@ public class PlayerMovementScript : MonoBehaviour
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
 
-        Vector3 moveDirection = new Vector3(moveX, 0, moveZ).normalized; // Normalize to keep consistent speed
+        Vector3 cameraForward = cameraTransform.forward;
+        Vector3 cameraRight = cameraTransform.right;
+
+        // Keep movement horizontal (ignore camera tilt)
+        cameraForward.y = 0;
+        cameraRight.y = 0;
+        cameraForward.Normalize();
+        cameraRight.Normalize();
+
+        // Compute move direction relative to the camera
+        Vector3 moveDirection = (cameraForward * moveZ + cameraRight * moveX).normalized;
 
         if (moveDirection != Vector3.zero)
         {
@@ -34,15 +55,18 @@ public class PlayerMovementScript : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
-    void RotatePlayerToCamera()
+
+    void Jump()
     {
-        Vector3 cameraForward = Camera.main.transform.forward;
-        cameraForward.y = 0; // Keep rotation horizontal
-        if (cameraForward != Vector3.zero)
+        // Check if the player is touching the ground
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f, groundLayer);
+
+        // Debugging (optional)
+        Debug.DrawRay(transform.position, Vector3.down * 1.1f, isGrounded ? Color.green : Color.red);
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(cameraForward);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.deltaTime);
+            rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
         }
     }
-
 }

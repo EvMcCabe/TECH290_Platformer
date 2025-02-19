@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rotater : MonoBehaviour
+public class Rotator : MonoBehaviour
 {
     public float rotationSpeed = 20f; //declare in editor
     public Vector3 collectibleRotation = new Vector3(0, 0, 1); //make new vector for z-axis rotation

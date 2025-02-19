@@ -39,5 +39,13 @@ public class PlayerCamera : MonoBehaviour
 
         // Position the camera behind the player
         transform.position = player.position + transform.rotation * offset;
+
+        // **Make player face the camera direction when moving forward**
+        if (Input.GetKey(KeyCode.W)) // Change to match your forward movement key
+        {
+            Vector3 forwardDirection = transform.forward;
+            forwardDirection.y = 0; // Keep the player upright (ignore vertical tilt)
+            player.forward = forwardDirection; // Set the player's forward direction
+        }
     }
 }

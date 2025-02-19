@@ -17,6 +17,7 @@ public class Menu : MonoBehaviour
     //This funtion sets the button as active or deactive (Button disappears when clicked)
     public void SetIntroActive()
     {
+         SceneManager.LoadScene("Scenes/Test_Scene");
         introButton.gameObject.SetActive(false);
     }
 }

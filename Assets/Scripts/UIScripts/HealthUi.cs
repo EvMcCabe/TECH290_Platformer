@@ -24,7 +24,7 @@ public class HealthUi : MonoBehaviour
         healthBar.value = healthComponent.GetCurrentHealth();
 
         // Update the health text
-        healthText.text = "Health: " + healthComponent.GetCurrentHealth();
+        healthText.text = healthComponent.GetCurrentHealth() + "/" + healthComponent.maxHealth;
 
         // Subscribe to health changes
         healthComponent.OnHealthChanged += UpdateHealthUI;
@@ -34,7 +34,7 @@ public class HealthUi : MonoBehaviour
     {
         // Update the health bar and health text when health changes
         healthBar.value = currentHealth;
-        healthText.text = "Health: " + currentHealth;  // Display the current health
+        healthText.text = currentHealth + "/" + healthComponent.maxHealth;  // Display the current health
     }
 
     private void OnDestroy()

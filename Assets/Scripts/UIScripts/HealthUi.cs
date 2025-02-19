@@ -2,33 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HealthUi : MonoBehaviour
 {
-    [SerializeField] private Slider healthBar; // Assign in Inspector
-    [SerializeField] private Health healthComponent; // Assign in Inspector
+    public Slider healthBar;
+    public TextMeshProUGUI healthText; // Reference to the Text component (or TextMeshProUGUI)
+    private Health healthComponent;
 
     void Start()
-{
-    if (healthComponent == null)
     {
-        Debug.LogError("Health component is not assigned to " + gameObject.name);
-        return;
+        healthComponent = FindObjectOfType<Health>(); // Find the player's Health script
+        if (healthComponent == null || healthText == null || healthBar == null)
+        {
+            Debug.LogError("Missing components in the Health UI!");
+            return;
+        }
+
+        // Set the health bar max value and current value
+        healthBar.maxValue = healthComponent.maxHealth;
+        healthBar.value = healthComponent.GetCurrentHealth();
+
+        // Update the health text
+        healthText.text = "Health: " + healthComponent.GetCurrentHealth();
+
+        // Subscribe to health changes
+        healthComponent.OnHealthChanged += UpdateHealthUI;
     }
-
-    // Ensure slider matches max health
-    healthBar.maxValue = healthComponent.maxHealth;
-    healthBar.minValue = 0; // Explicitly set min value
-    healthBar.value = healthComponent.GetCurrentHealth(); // Set starting health
-
-    healthComponent.OnHealthChanged += UpdateHealthUI;
-}
-
 
     void UpdateHealthUI(int currentHealth)
     {
-        Debug.Log("Health Updated: " + currentHealth);
+        // Update the health bar and health text when health changes
         healthBar.value = currentHealth;
+        healthText.text = "Health: " + currentHealth;  // Display the current health
     }
 
     private void OnDestroy()

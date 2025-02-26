@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 604799566753973073}
   - component: {fileID: 8109311496221745205}
   - component: {fileID: 7849865079097798838}
+  - component: {fileID: 2160878945991042036}
   m_Layer: 0
   m_Name: Stone_Gate_Pillar_Right
   m_TagString: Untagged
@@ -83,6 +84,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2160878945991042036
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2654746013128524656}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.024789348, y: 0.05040976, z: 0.35123986}
+  m_Center: {x: 0.0535926, y: 9.811949e-16, z: 0.17623061}
 --- !u!1 &4845858068210854114
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +116,7 @@ GameObject:
   - component: {fileID: 8315060616209232792}
   - component: {fileID: 8534126543889863927}
   - component: {fileID: 7479165488829762352}
+  - component: {fileID: 503614124687482348}
   m_Layer: 0
   m_Name: Gate
   m_TagString: Untagged
@@ -110,8 +133,8 @@ Transform:
   m_GameObject: {fileID: 4845858068210854114}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.008761644, y: 3.4746618, z: 0}
-  m_LocalScale: {x: 200.56683, y: 215.59381, z: 200.56683}
+  m_LocalPosition: {x: -0.008761644, y: 3.68, z: 0}
+  m_LocalScale: {x: 245.14, y: 215.59381, z: -58.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8463032842513333052}
@@ -166,6 +189,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &503614124687482348
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845858068210854114}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.015000003, y: 0.012775, z: 0.00054999994}
+  m_Center: {x: 0.00017249449, y: -0.006292588, z: 1.1641561e-10}
 --- !u!1 &5628168986597596871
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +367,7 @@ GameObject:
   - component: {fileID: 8879451523177324302}
   - component: {fileID: 5259932607581815149}
   - component: {fileID: 3731327480978378379}
+  - component: {fileID: 3074550908450951539}
   m_Layer: 0
   m_Name: Stone_Gate_Pillar_Left
   m_TagString: Untagged
@@ -395,3 +440,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3074550908450951539
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7046122662932891378}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.024789345, y: 0.05040976, z: 0.35123986}
+  m_Center: {x: -0.052745868, y: 4.0035156e-15, z: 0.17623061}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    public enum CollectibleType { GoldCoin, HealthPotion, ImportantItem }
+    public enum CollectibleType { GoldCoin, HealthPotion, KeyCube, ImportantItem }
     public CollectibleType collectibleType; // Type of the collectible
     public static event System.Action<CollectibleType> OnCollect; // Event that sends the collectible type
 

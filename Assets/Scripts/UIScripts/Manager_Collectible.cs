@@ -2,70 +2,160 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; // Add for scene management
+using TMPro;
+
 
 public class CollectiblesManager : MonoBehaviour
 {
-    public int goldCollected = 0; // Start at 0 and increase when collecting
+    public int goldCollected = 0;
     public Text goldCollectedDisplay;
 
-    public int totalGoldCollectibles; // Total number of gold coins in the scene
-    public Text itemsToCollectDisplay;
+    public int totalGoldCollectibles;
+    public TextMeshProUGUI rocketPiecesDisplay;
 
-    public Health playerHealth; // Reference to the player's Health script
+
+    public Health playerHealth;
+
+    private int totalKeyCubes = 0;
+    private int keyCubesCollected = 0;
+
+    private int totalRocketPieces = 4;
+    private int rocketPiecesCollected = 0;
+
+    public GameObject gate; // Assign this in the Unity Inspector
 
     void Start()
     {
         Collectible.OnCollect += CollectItem;
 
-        CountTotalGoldCollectibles(); // Count gold collectibles in the scene
-        DisplayCollectibles(); // Initialize UI
+        CountCollectibles();
+        DisplayCollectibles();
     }
 
-    void CountTotalGoldCollectibles()
+    void CountCollectibles()
     {
         GameObject[] collectibles = GameObject.FindGameObjectsWithTag("Collectible");
-        totalGoldCollectibles = collectibles.Length; // Get the number of gold coins at the start
-        Debug.Log("Total collectibles: " + totalGoldCollectibles);
+
+        foreach (GameObject collectible in collectibles)
+        {
+            Collectible collectibleScript = collectible.GetComponent<Collectible>();
+            if (collectibleScript != null)
+            {
+                switch (collectibleScript.collectibleType)
+                {
+                    case Collectible.CollectibleType.GoldCoin:
+                        totalGoldCollectibles++;
+                        break;
+                    case Collectible.CollectibleType.KeyCube:
+                        totalKeyCubes++;
+                        break;
+                    case Collectible.CollectibleType.ImportantItem:
+                        if (collectible.CompareTag("Item")) // Ensure it's a Rocket Piece
+                        {
+                            totalRocketPieces++;
+                        }
+                        break;
+                }
+            }
+        }
+
+        Debug.Log("Total Gold Coins: " + totalGoldCollectibles);
+        Debug.Log("Total KeyCubes: " + totalKeyCubes);
+        Debug.Log("Total Rocket Pieces: " + totalRocketPieces);
     }
 
     void DisplayCollectibles()
+{
+    if (goldCollectedDisplay != null)
     {
-        if (goldCollectedDisplay == null)
-        {
-            Debug.LogError("goldCollectedDisplay is not assigned in the Inspector!");
-            return;
-        }
-        goldCollectedDisplay.text = "Gold Collected: " + goldCollected + " / " + totalGoldCollectibles;
+        goldCollectedDisplay.text = "Gold: " + goldCollected + " / " + totalGoldCollectibles;
     }
+
+    if (rocketPiecesDisplay != null)
+    {
+        rocketPiecesDisplay.text = "Rocket Pieces: " + rocketPiecesCollected + "/" + totalRocketPieces;
+    }
+}
+
+
 
     void CollectItem(Collectible.CollectibleType collectibleType)
     {
         Debug.Log(collectibleType.ToString() + " collected!");
 
-        if (collectibleType == Collectible.CollectibleType.GoldCoin)
+        switch (collectibleType)
         {
-            goldCollected++; // Increase gold collected count
+            case Collectible.CollectibleType.GoldCoin:
+                goldCollected++;
+                break;
+
+            case Collectible.CollectibleType.KeyCube:
+                keyCubesCollected++;
+                CheckGateUnlock();
+                break;
+
+            case Collectible.CollectibleType.ImportantItem:
+                rocketPiecesCollected++;
+                CheckRocketPieceCollection();
+                break;
+
+            case Collectible.CollectibleType.HealthPotion:
+                if (playerHealth != null)
+                {
+                    int healingAmount = 50;
+                    int healAmount = Mathf.Min(healingAmount, playerHealth.maxHealth - playerHealth.GetCurrentHealth());
+                    playerHealth.Heal(healAmount);
+                }
+                break;
         }
-        else if (collectibleType == Collectible.CollectibleType.HealthPotion)
-{
-    if (playerHealth != null)
-    {
-        int healingAmount = 50; // Amount to heal
 
-        // Calculate the amount to heal, ensuring it doesn't exceed the max health
-        int healAmount = Mathf.Min(healingAmount, playerHealth.maxHealth - playerHealth.GetCurrentHealth());
-
-        // Heal the player by the calculated amount
-        playerHealth.Heal(healAmount);
+        DisplayCollectibles();
     }
-}
 
-        DisplayCollectibles(); // Update UI
+    void CheckGateUnlock()
+    {
+        if (keyCubesCollected >= totalKeyCubes)
+        {
+            UnlockGate();
+        }
+    }
+
+    void CheckRocketPieceCollection()
+    {
+        if (rocketPiecesCollected >= totalRocketPieces)
+        {
+            LoadWinScene();
+        }
+    }
+
+    void UnlockGate()
+    {
+        if (gate != null)
+        {
+            Collider gateCollider = gate.GetComponent<Collider>();
+            if (gateCollider != null)
+            {
+                Destroy(gateCollider);
+                Destroy(gate);
+                Debug.Log("Gate unlocked! Collider removed.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Gate GameObject is not assigned in the Inspector!");
+        }
+    }
+
+    void LoadWinScene()
+    {
+        // Load the win scene (make sure you have a scene named "WinScene" in your project)
+        Debug.Log("All Rocket Pieces collected! Loading Win Scene...");
+        SceneManager.LoadScene("WinScene"); // Replace "WinScene" with the name of your actual win scene
     }
 
     private void OnDestroy()
     {
-        // Unsubscribe from event to avoid errors
         Collectible.OnCollect -= CollectItem;
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2400510031361712144}
   - component: {fileID: 7143402289953654961}
+  - component: {fileID: 8888030416603414142}
   m_Layer: 0
   m_Name: Stone_Wall
   m_TagString: Untagged
@@ -62,6 +63,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!65 &8888030416603414142
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215164798965903106}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5582554754729856187
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,6 +95,7 @@ GameObject:
   - component: {fileID: 8917578011742395593}
   - component: {fileID: 5404148105101794145}
   - component: {fileID: 4704144408180108702}
+  - component: {fileID: 2722480067847157028}
   m_Layer: 0
   m_Name: Stone_Wall_Pillar_Left
   m_TagString: Untagged
@@ -145,6 +168,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2722480067847157028
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5582554754729856187}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.85860234, y: 0.858604, z: 4.9484076}
+  m_Center: {x: -2.214785, y: -0.0060739843, z: 2.4582803}
 --- !u!1 &5933361494559654496
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +200,7 @@ GameObject:
   - component: {fileID: 7845052618918467425}
   - component: {fileID: 3178748427162390459}
   - component: {fileID: 6511359483197240262}
+  - component: {fileID: 876746835039220740}
   m_Layer: 0
   m_Name: Stone_Wall
   m_TagString: Untagged
@@ -228,6 +273,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &876746835039220740
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5933361494559654496}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.5894403, y: 0.83204603, z: 4.634006}
+  m_Center: {x: -0.082326315, y: -0.00033137217, z: 2.3194058}
 --- !u!1 &6077909879904772460
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +305,7 @@ GameObject:
   - component: {fileID: 7680358363272644140}
   - component: {fileID: 3081154363915445604}
   - component: {fileID: 7311233657403368098}
+  - component: {fileID: 2558194865557914127}
   m_Layer: 0
   m_Name: Stone_Wall_Pillar_Right
   m_TagString: Untagged
@@ -311,3 +378,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2558194865557914127
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077909879904772460}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8586027, y: 0.858604, z: 4.948408}
+  m_Center: {x: 2.1795902, y: -0.0000015199182, z: 2.4943604}
